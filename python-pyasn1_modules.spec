@@ -5,7 +5,7 @@ Summary:	ASN.1 tools for Python
 Summary(pl.UTF-8):	Narzędzia ASN.1 dla Pythona
 Name:		python-pyasn1_modules
 Version:	0.0.2
-Release:	1
+Release:	2
 License:	BSD-like
 Group:		Libraries/Python
 Source0:	http://downloads.sourceforge.net/pyasn1/%{module}-%{version}.tar.gz
