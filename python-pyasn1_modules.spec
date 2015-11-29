@@ -11,6 +11,7 @@ Group:		Libraries/Python
 Source0:	http://downloads.sourceforge.net/pyasn1/%{module}-%{version}.tar.gz
 # Source0-md5:	adc49aee6603a162f9d4a6830c8dc470
 URL:		http://pyasn1.sourceforge.net/
+BuildRequires:	rpmbuild(macros) >= 1.710
 BuildRequires:	python >= 1:2.5
 BuildRequires:	rpm-pythonprov
 %pyrequires_eq	python-modules
