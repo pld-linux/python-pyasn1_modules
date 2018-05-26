@@ -4,16 +4,15 @@
 %bcond_without	python3	# CPython 3.x module
 %bcond_without	tests	# unit tests
 
-%define		module	pyasn1-modules
 Summary:	ASN.1 modules for Python 2
 Summary(pl.UTF-8):	Moduły ASN.1 dla Pythona 2
 Name:		python-pyasn1_modules
 Version:	0.2.1
-Release:	1
+Release:	2
 License:	BSD-like
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/pyasn1-modules/
-Source0:	https://files.pythonhosted.org/packages/source/p/pyasn1-modules/%{module}-%{version}.tar.gz
+Source0:	https://files.pythonhosted.org/packages/source/p/pyasn1-modules/pyasn1-modules-%{version}.tar.gz
 # Source0-md5:	ff938698590f314ff9b3d5c48737d899
 URL:		https://github.com/etingof/pyasn1-modules
 %if %{with python2}
@@ -55,28 +54,29 @@ wyrażona w Pythonie przy użyciu modelu danych pyasn1.
 
 Jest rozwijana z myślą o programistach i testerach protokołów.
 
-%package -n python3-%{module}
+%package -n python3-pyasn1_modules
 Summary:	ASN.1 modules for Python 2
 Summary(pl.UTF-8):	Moduły ASN.1 dla Pythona 2
 Group:		Libraries/Python
 Requires:	python3-modules >= 1:2.5
 Requires:	python3-pyasn1 >= 0.4.1
 Requires:	python3-pyasn1 < 0.5.0
+Obsoletes:	python3-pyasn1-modules
 
-%description -n python3-%{module}
+%description -n python3-pyasn1_modules
 This is a small but growing collection of ASN.1 data structures
 expressed in Python terms using pyasn1 data model.
 
 It's thought to be useful to protocol developers and testers.
 
-%description -n python3-%{module} -l pl.UTF-8
+%description -n python3-pyasn1_modules -l pl.UTF-8
 Ten pakiet to mała, ale wciąż rosnąca kolekcja struktur danych ASN.1
 wyrażona w Pythonie przy użyciu modelu danych pyasn1.
 
 Jest rozwijana z myślą o programistach i testerach protokołów.
 
 %prep
-%setup -q -n %{module}-%{version}
+%setup -q -n pyasn1-modules-%{version}
 
 %build
 %if %{with python2}
@@ -103,9 +103,9 @@ cp tools/*.py $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 %if %{with python3}
 %py3_install
 
-install -d $RPM_BUILD_ROOT%{_examplesdir}/python3-%{module}-%{version}
-cp tools/*.py $RPM_BUILD_ROOT%{_examplesdir}/python3-%{module}-%{version}
-%{__sed} -i -e '1s,/usr/bin/env python,%{__python3},' $RPM_BUILD_ROOT%{_examplesdir}/python3-%{module}-%{version}/*.py
+install -d $RPM_BUILD_ROOT%{_examplesdir}/python3-pyasn1_modules-%{version}
+cp tools/*.py $RPM_BUILD_ROOT%{_examplesdir}/python3-pyasn1_modules-%{version}
+%{__sed} -i -e '1s,/usr/bin/env python,%{__python3},' $RPM_BUILD_ROOT%{_examplesdir}/python3-pyasn1_modules-%{version}/*.py
 %endif
 
 %clean
@@ -121,10 +121,10 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 
 %if %{with python3}
-%files -n python3-%{module}
+%files -n python3-pyasn1_modules
 %defattr(644,root,root,755)
 %doc CHANGES.txt LICENSE.txt README.md
 %{py3_sitescriptdir}/pyasn1_modules
 %{py3_sitescriptdir}/pyasn1_modules-%{version}-py*.egg-info
-%{_examplesdir}/python3-%{module}-%{version}
+%{_examplesdir}/python3-pyasn1_modules-%{version}
 %endif
