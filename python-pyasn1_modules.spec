@@ -7,13 +7,13 @@
 Summary:	ASN.1 modules for Python 2
 Summary(pl.UTF-8):	Moduły ASN.1 dla Pythona 2
 Name:		python-pyasn1_modules
-Version:	0.2.2
-Release:	2
+Version:	0.2.8
+Release:	1
 License:	BSD-like
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/pyasn1-modules/
 Source0:	https://files.pythonhosted.org/packages/source/p/pyasn1-modules/pyasn1-modules-%{version}.tar.gz
-# Source0-md5:	65ce1ea1021679bffe96065baab232de
+# Source0-md5:	107e1ece7d0a41d782f69f8a95a4d9bc
 URL:		https://github.com/etingof/pyasn1-modules
 %if %{with python2}
 BuildRequires:	python >= 1:2.5
