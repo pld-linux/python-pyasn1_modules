@@ -61,7 +61,7 @@ Group:		Libraries/Python
 Requires:	python3-modules >= 1:2.5
 Requires:	python3-pyasn1 >= 0.4.1
 Requires:	python3-pyasn1 < 0.5.0
-Obsoletes:	python3-pyasn1-modules
+Obsoletes:	python3-pyasn1-modules < 0.2.1-2
 
 %description -n python3-pyasn1_modules
 This is a small but growing collection of ASN.1 data structures
