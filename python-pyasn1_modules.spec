@@ -7,38 +7,34 @@
 Summary:	ASN.1 modules for Python 2
 Summary(pl.UTF-8):	Moduły ASN.1 dla Pythona 2
 Name:		python-pyasn1_modules
-Version:	0.2.8
-Release:	6
+# keep 0.3.x here for python2 support
+Version:	0.3.0
+Release:	1
 License:	BSD-like
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/pyasn1-modules/
-Source0:	https://files.pythonhosted.org/packages/source/p/pyasn1-modules/pyasn1-modules-%{version}.tar.gz
-# Source0-md5:	107e1ece7d0a41d782f69f8a95a4d9bc
+Source0:	https://files.pythonhosted.org/packages/source/p/pyasn1-modules/pyasn1_modules-%{version}.tar.gz
+# Source0-md5:	94ee572b06ae09f1903b11333575b091
 URL:		https://github.com/etingof/pyasn1-modules
 %if %{with python2}
-BuildRequires:	python >= 1:2.5
+BuildRequires:	python >= 1:2.7
 BuildRequires:	python-setuptools
 %if %{with tests}
-BuildRequires:	python-pyasn1 >= 0.4.1
-BuildRequires:	python-pyasn1 < 0.5.0
-%if "%{py_ver}" < "2.7"
-BuildRequires:	python-unittest2
-%endif
+BuildRequires:	python-pyasn1 >= 0.4.7
+BuildRequires:	python-pyasn1 < 0.6.0
 %endif
 %endif
 %if %{with python3}
-BuildRequires:	python3 >= 1:3.2
+BuildRequires:	python3 >= 1:3.6
 BuildRequires:	python3-setuptools
 %if %{with tests}
-BuildRequires:	python3-pyasn1 >= 0.4.1
-BuildRequires:	python3-pyasn1 < 0.5.0
+BuildRequires:	python3-pyasn1 >= 0.4.7
+BuildRequires:	python3-pyasn1 < 0.6.0
 %endif
 %endif
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
-Requires:	python-modules >= 1:2.5
-Requires:	python-pyasn1 >= 0.4.1
-Requires:	python-pyasn1 < 0.5.0
+Requires:	python-modules >= 1:2.7
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -58,9 +54,7 @@ Jest rozwijana z myślą o programistach i testerach protokołów.
 Summary:	ASN.1 modules for Python 2
 Summary(pl.UTF-8):	Moduły ASN.1 dla Pythona 2
 Group:		Libraries/Python
-Requires:	python3-modules >= 1:2.5
-Requires:	python3-pyasn1 >= 0.4.1
-Requires:	python3-pyasn1 < 0.5.0
+Requires:	python3-modules >= 1:3.6
 Obsoletes:	python3-pyasn1-modules < 0.2.1-2
 
 %description -n python3-pyasn1_modules
@@ -76,15 +70,23 @@ wyrażona w Pythonie przy użyciu modelu danych pyasn1.
 Jest rozwijana z myślą o programistach i testerach protokołów.
 
 %prep
-%setup -q -n pyasn1-modules-%{version}
+%setup -q -n pyasn1_modules-%{version}
 
 %build
 %if %{with python2}
-%py_build %{?with_tests:test}
+%py_build
+
+%if %{with tests}
+%{__python} -m tests
+%endif
 %endif
 
 %if %{with python3}
-%py3_build %{?with_tests:test}
+%py3_build
+
+%if %{with tests}
+%{__python3} -m tests
+%endif
 %endif
 
 %install
