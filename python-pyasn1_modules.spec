@@ -1,7 +1,7 @@
 #
 # Conditional build:
 %bcond_without	python2	# CPython 2.x module
-%bcond_without	python3	# CPython 3.x module
+%bcond_with	python3	# CPython 3.x module (built from python3-pyasn1_modules.spec)
 %bcond_without	tests	# unit tests
 
 Summary:	ASN.1 modules for Python 2
@@ -9,7 +9,7 @@ Summary(pl.UTF-8):	Moduły ASN.1 dla Pythona 2
 Name:		python-pyasn1_modules
 # keep 0.3.x here for python2 support
 Version:	0.3.0
-Release:	1
+Release:	2
 License:	BSD-like
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/pyasn1-modules/
@@ -51,8 +51,8 @@ wyrażona w Pythonie przy użyciu modelu danych pyasn1.
 Jest rozwijana z myślą o programistach i testerach protokołów.
 
 %package -n python3-pyasn1_modules
-Summary:	ASN.1 modules for Python 2
-Summary(pl.UTF-8):	Moduły ASN.1 dla Pythona 2
+Summary:	ASN.1 modules for Python 3
+Summary(pl.UTF-8):	Moduły ASN.1 dla Pythona 3
 Group:		Libraries/Python
 Requires:	python3-modules >= 1:3.6
 Obsoletes:	python3-pyasn1-modules < 0.2.1-2
